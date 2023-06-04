@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Sign-Up</title>
+    <link rel="stylesheet" href="page.css">
+    <script>
+        function validateForm() {
+            const identifierInput = document.getElementById("identifier");
+            const identifierError = document.getElementById("identifierError");
+            const passwordInput = document.getElementById("pswrd");
+            const passwordError = document.getElementById("passwordError");
+
+            identifierError.textContent = "";
+            passwordError.textContent = "";
+
+            if (identifierInput.value === "") {
+                identifierError.textContent = "Please enter a valid email address or phone number.";
+                return false;
+            }
+
+            if (passwordInput.value === "") {
+                passwordError.textContent = "Please enter your account password.";
+                return false;
+            }
+
+            const emailRegex = /^\S+@\S+\.\S+$/;
+            const phoneRegex = /^[0-9]{10}$/;
+
+            if (
+                (identifierInput.value.match(emailRegex) === null && identifierInput.value.match(phoneRegex) === null) ||
+                (identifierInput.value.match(emailRegex) !== null && !identifierInput.value.match(emailRegex).includes(identifierInput.value))
+            ) {
+                identifierError.textContent = "Please enter a valid email address or phone number.";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <!-- Headings for the form -->
+        <div class="headingsContainer">
+            <h3>Login</h3>
+            <p>Login with your email or phone number and password</p>
+        </div>
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Email or Phone number -->
+            <label for="identifier">Enter Your Email or Phone number</label>
+            <input type="text" id="identifier" placeholder="Enter Email or Phone number" name="identifier" required>
+            <div id="identifierError" class="error"></div>
+
+            <br><br>
+
+            <!-- Password -->
+            <label for="pswrd">Your password</label>
+            <input type="password" id="pswrd" placeholder="Enter Password" name="pswrd" required>
+            <div id="passwordError" class="error"></div>
+
+            <!-- sub container for the checkbox and forgot password link -->
+            <div class="subcontainer">
+                <div class="checkbox-container">
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <p class="forgotpsd"> <a href="#">Forgot Password?</a></p>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">Login</button>
+
+            <!-- Sign up link -->
+            <p class="register">Not a member?  <a href="signuppage.html">Register here!</a></p>
+
+        </div>
+    </form>
+</body>
+</html>

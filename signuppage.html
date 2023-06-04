@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Sign-Up</title>
+    <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <form action="" id="signup-form">
+        <!-- Headings for the form -->
+        <div class="headingsContainer">
+            <h3>Sign up</h3>
+            <p>Sign Up by filling the form below</p>
+        </div>
+
+        <!-- Main container for all inputs -->
+        <div class="mainContainer">
+            <!-- Firstname -->
+            <label for="firstname">Enter Your Firstname:</label>
+            <input type="text" placeholder="eg.Narayan" name="firstname" required>
+
+            <br><br>
+            <!-- Lastname -->
+            <label for="lastname">Enter Your Lastname:</label>
+            <input type="text" placeholder="eg.Bagale" name="lastname" required>
+
+            <br><br>
+            <!-- email -->
+            <label for="email">Enter Your E-mail:</label>
+            <input type="email" placeholder="eg.narayanbagale@gmail.com" name="email" required>
+
+            <br><br>
+            <!-- date of birth -->
+            <label for="birthday">Enter Date of birth:</label>
+            <input type="date" id="birthday" name="birthday" required>
+
+            <br><br>
+            <!-- phone number -->
+            <label for="phone">Enter Your Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[9]{1}[7-8]{1}[0-9]{8}" placeholder="eg. 98xxxxxxxx" required>
+
+            <br><br>
+            <!-- Password -->
+            <label for="password">Create a password:</label>
+            <div style="position: relative;">
+                <input type="password" placeholder="Enter Password" name="password" id="password" required>
+            </div>
+            <span id="password-error" class="error"></span>
+            <br><br>
+            <!-- Confirm Password -->
+            <label for="confirm-password">Confirm Password:</label>
+            <div style="position: relative;">
+                <input type="password" placeholder="Confirm Password" name="confirm-password" id="confirm-password" required>
+            </div>
+            <span id="confirm-password-error" class="error"></span>
+
+            <!-- sub container for the checkbox and forgot password link -->
+            <div class="subcontainer">
+                <div class="checkbox-container">
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <p class="forgotpsd"> <a href="#">Forgot Password?</a></p>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" id="submit-btn" disabled>Sign Up</button>
+
+            <!-- Sign up link -->
+            <p class="register">Already a member? <a href="loginpage.html">Login here!</a></p>
+
+        </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        const form = document.getElementById('signup-form');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+        const passwordError = document.getElementById('password-error');
+        const confirmPasswordError = document.getElementById('confirm-password-error');
+        const submitButton = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const isValid = validateForm();
+            if (isValid) {
+                form.submit();
+            }
+        });
+
+        passwordInput.addEventListener('input', validatePassword);
+        confirmPasswordInput.addEventListener('input', validatePassword);
+
+        function validateForm() {
+            const firstnameInput = form.querySelector('input[name="firstname"]');
+            const lastnameInput = form.querySelector('input[name="lastname"]');
+            const emailInput = form.querySelector('input[name="email"]');
+            const phoneInput = form.querySelector('input[name="phone"]');
+            const inputs = [firstnameInput, lastnameInput, emailInput, phoneInput];
+
+            let isValid = true;
+
+            inputs.forEach(input => {
+                const value = input.value.trim();
+
+                if (value === '') {
+                    isValid = false;
+                    input.classList.add('error');
+                } else {
+                    input.classList.remove('error');
+                }
+            });
+
+            return isValid;
+        }
+
+        function validatePassword() {
+            const password = passwordInput.value.trim();
+            const confirmPassword = confirmPasswordInput.value.trim();
+
+            // Reset the error messages
+            passwordError.textContent = '';
+            confirmPasswordError.textContent = '';
+
+            // Password must contain at least one number, one special character, and be 8 characters long
+            const numberPattern = /\d/;
+            const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+
+            if (password.length < 8 || !numberPattern.test(password) || !specialCharPattern.test(password)) {
+                passwordError.textContent = 'Password must be at least 8 characters long and contain at least one number and one special character';
+                submitButton.disabled = true;
+            } else {
+                passwordError.textContent = '';
+            }
+
+            if (password !== confirmPassword) {
+                confirmPasswordError.textContent = 'Passwords do not match';
+                submitButton.disabled = true;
+            } else {
+                confirmPasswordError.textContent = '';
+            }
+
+            if (password.length >= 8 && numberPattern.test(password) && specialCharPattern.test(password) && password === confirmPassword) {
+                submitButton.disabled = false;
+            }
+        }
+
+        function togglePasswordVisibility(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = document.getElementById(`${inputId}-toggle-icon`);
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

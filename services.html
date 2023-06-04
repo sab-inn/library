@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <title>Waling Library</title>
+</head>
+<body>
+    <header>
+      <div class="wrapper">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" class="logo-of-library" style="width: 90px; position: absolute; top: 10px; left: 30px;"></a>
+        </div>
+        <div class="navbar">
+            <div class="close-nav"><button>×</button></div>
+            <nav>
+                <br>
+                <ul>
+                    <li><a href="signuppage.html" class="signup-buttons">Sign Up</a></li>
+                    <li><a href="loginpage.html" class="login-buttons">Login</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="study.html">STUDY</a></li>
+                    <li  class="active"><a href="services.html">NEWS AND NOTICES</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+        <div class="menu-bar">
+            <button><i></i></button>
+        </div>
+    </div>
+    
+        <div class="text-box">
+            <h1><span class="font-color-change"></span></h1>
+            <p id="news-and-views">News and views</p>
+            <a href="https://www.facebook.com/groups/519155083047067" class="main-btn">Visit Us To know More</a>
+
+        </div>
+</header>
+
+<!-- what do we provide -->
+       <div class="container-for-services">
+        <div class="services-we-offer">
+            <div class="different-news"><br>
+              <button type="button" class="Local-news-button"><span class="change-newss-for-Local"></span></button>
+              <button type="button" class="International-news-button"><span class="change-newss-for-International"></span></button>
+            </div>
+          </div>
+          
+          <br>
+          <!-- news1local -->
+
+
+          <div class="all-the-services-of-Local">
+            <img src="images/bluelily.jpg" class="Local-services-toggle" style="float: left; width: 30%; margin-right: 20px; display: none;">
+            <h1 class="Local-services-toggle" style="color: blue; text-decoration: underline; display: none;">This is test waling  news1</h1>
+            <p class="Local-services-toggle" style="display: none;"> Write your local news1 here.</p>
+             </div><br> <br>
+
+             <!-- news1international  -->
+
+
+             <div class="all-the-services-of-International">
+                <img src="images/tiger.jpg" class="International-services-toggle" style="float: left; width: 30%; margin-right: 20px; display: none;">
+                <h1 class="International-services-toggle" style="color: blue; text-decoration: underline; display: none;">This is test international news1</h1>
+                <p class="International-services-toggle" style="display: none;"><p class="International-services-toggle" style="display: none;">Write your international news here.</p></p>
+                    </div>
+ 
+                    <br><br><br><br><br><br><br><br>
+					
+                <!-- news2local -->
+
+                <div class="all-the-services-of-Local">
+            <img src="images/iphone.jpg" class="Local-services-toggle" style="float: left; width: 30%; margin-right: 20px; display: none;">
+            <h1 class="Local-services-toggle" style="color: blue; text-decoration: underline; display: none;">This is test waling news 2</h1>
+            <p class="Local-services-toggle" style="display: none;"> Write your local news 2 here.</p>
+          </div>                        <br><br><br><br><br><br><br><br>
+
+
+                <!-- news2international -->
+
+
+                <div class="all-the-services-of-International">
+                    <img src="images/myflower.png" class="International-services-toggle" style="float: left; width: 30%; margin-right: 20px; display: none;">
+                    <h1 class="International-services-toggle" style="color: blue; text-decoration: underline; display: none;">This is test international news 2</h1>
+                    <p class="International-services-toggle" style="display: none;">Write your international bews 2 here</p></p>
+                        </div>
+
+                        <br><br><br><br><br><br><br><br>
+     
+                    </div> 
+
+        </div>
+          
+          
+          <script>
+            $(document).ready(function(){
+              $(".Local-news-button").click(function(){
+                $("div.all-the-services-of-Local .Local-services-toggle").slideToggle("slow");
+                $("div.all-the-services-of-International .International-services-toggle").hide();
+              });
+              $(".International-news-button").click(function(){
+                $("div.all-the-services-of-International .International-services-toggle").slideToggle("slow");
+                $("div.all-the-services-of-Local .Local-services-toggle").hide();
+              });
+            });
+          </script>
+
+<!----------------Footer----------------->
+  <section class="footer">
+        <h4>Waling Library</h4>
+        <p>Education for Success. </p>
+    <div class="icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+        <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+    <h5></h5>
+    <p>.....</p>
+    <p>@All Right Reserved.</p>
+    </section>
+
+<!-- script for the toggle menu bar -->
+    <script>
+        const theBody = document.querySelector('body');
+        const openNav = document.querySelector('.menu-bar button');
+        const closeNav = document.querySelector('.close-nav button');
+        const Navbar = document.querySelector('.navbar');
+        const bodyText = document.querySelector('.text-box');
+
+         function showHide(){ 
+
+         Navbar.classList.toggle('show');
+
+    if (Navbar.classList.contains('show')) {
+
+        
+        bodyText.style.display = "none";
+    } else {
+
+        bodyText.style.display = "block";
+    }
+}
+
+openNav.onclick = showHide;
+closeNav.onclick = showHide;
+      
+    </script>
+</body>
+</html>
